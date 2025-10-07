@@ -1,7 +1,8 @@
 ## PFAS_BDE.py – Bond Dissociation Energy Analysis Script
 
-This script performs bond dissociation energy (BDE) analysis for per- and polyfluoroalkyl substances (PFAS) and PFAS like molecules found in the PFAS database.
-It returns in image of all available BDE and molecules found using a particular QM method from the data base. 
+This script performs bond dissociation energy (BDE) analysis for per- and polyfluoroalkyl substances (PFAS) and related molecules using quantum chemistry data from a curated PFAS database.
+It returns a grid image of all available BDE fragments and parent molecules corresponding to a selected quantum method (e.g., M06-2X, B3LYP, etc.) from the database.
+
 ---
 
 ## Features
@@ -13,7 +14,24 @@ It returns in image of all available BDE and molecules found using a particular 
 - Logs execution and input validation steps
 
 ---
+## Script Usage
 
+You can run the script from the command line with:
+
+python PFAS_BDE.py -ph -p protonated -m M06-2X -t homolytic -o bde_grid.png
+
+
+Arguments:
+
+| Flag | Description                                  | Required |
+| ---- | -------------------------------------------- | -------- |
+| `-ph` | phase: `gas` or `water`                    | No (gas)    |
+| `-p` | PFAS type: `protonated` or `deprotonated`    | Yes    |
+| `-m` | Quantum method name (must be in the dataset) | Yes    |
+| `-t` | BDE type: `homolytic` or `heterolytic`       | No (homolytic)     |
+| `-o` | Output image file name                       | No  (Out)   |
+
+-------------------
 ## Requirements
 
 - Python 3.7+
@@ -26,3 +44,9 @@ Install dependencies via pip:
 
 ```bash
 pip install pandas rdkit pillow matplotlib
+```
+Linked Database
+
+The script automatically pulls data from the following hosted repository:
+https://github.com/mmarciesky/PFAS_Database
+
